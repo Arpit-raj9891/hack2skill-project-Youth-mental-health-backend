@@ -2,18 +2,14 @@ from flask import Flask
 from flask_cors import CORS
 from chatbot import chatbot_bp
 
-def create_app():
-    app = Flask(_name_)
-    CORS(app) 
+app = Flask(__name__)
+CORS(app)
 
-    app.register_blueprint(chatbot_bp, url_prefix="/chatbot")
+app.register_blueprint(chatbot_bp, url_prefix="/chatbot")
 
-    @app.route("/")
-    def home():
-        return {"message": "Hack2Skill Project Backend Running"}
+@app.route("/")
+def home():
+    return {"message": "Hack2Skill Project Backend Running"}
 
-    return app
-
-if _name_ == "_main_":
-    app = create_app()
-    app.run(host="0.0.0.0", port=5000, debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
