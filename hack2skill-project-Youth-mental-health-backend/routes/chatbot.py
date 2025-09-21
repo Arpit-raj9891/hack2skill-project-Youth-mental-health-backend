@@ -4,8 +4,11 @@ from sentence_transformers import SentenceTransformer
 import faiss
 import google.generativeai as genai
 import json
+from dotenv import load_dotenv
+import os
 
-# 🔑 Use the existing Gemini key
+load_dotenv()
+GENIE_API_KEY = os.getenv("GENIE_API_KEY")
 genai.configure(api_key=GENIE_API_KEY)
 gen_model = genai.GenerativeModel("gemini-1.5-flash")
 
