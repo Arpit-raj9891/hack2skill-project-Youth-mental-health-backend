@@ -1,15 +1,19 @@
 from flask import Flask
-from routes.chatbot import chatbot_bp
-from routes.journal import journal_bp
+from flask_cors import CORS
+from chatbot import chatbot_bp
 
-app = Flask(__name__)
+def create_app():
+    app = Flask(_name_)
+    CORS(app) 
 
-# Register Blueprints (modular routes)
-app.register_blueprint(chatbot_bp, url_prefix="/chatbot")
+    app.register_blueprint(chatbot_bp, url_prefix="/chatbot")
 
-@app.route("/")
-def home():
-    return {"message": "Hack2Skill Project Backend Running"}
+    @app.route("/")
+    def home():
+        return {"message": "Hack2Skill Project Backend Running"}
 
-if __name__ == "__main__":
-    app.run(debug=True)
+    return app
+
+if _name_ == "_main_":
+    app = create_app()
+    app.run(host="0.0.0.0", port=5000, debug=True)
