@@ -6,7 +6,6 @@ app = Flask(__name__)
 
 # Register Blueprints (modular routes)
 app.register_blueprint(chatbot_bp, url_prefix="/chatbot")
-app.register_blueprint(journal_bp, url_prefix="/journal")
 
 @app.route("/")
 def home():
